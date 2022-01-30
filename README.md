@@ -14,20 +14,37 @@ You have estimated it takes 4 weeks to build this solution. You have 3 days. Goo
 ## Technical documentation
 ### Data and Domain model
 In this section, please describe the main entities you managed to identify, the relationships between them and how you mapped them in the database.
+----------------------------------------------------------------------------------------------------------------------------------
+I identified 5 entities. Type_Of_Program, Room, Room_Type, Registration and Program.
+Type_Of_Program and Room are in a many-to-many relationship and Room_Type is the table who connects them.
+Registration and Program tables is a 1-many relationship.
+Program and Room tables we have a 1-many relationship.
+Program and Type_Of_Program we have also a 1-many relationship.
+I mapped them in the database by creating a connection with the localhost server and the database was created in phpMyAdmin. Each entity has a class assigned to it.
+----------------------------------------------------------------------------------------------------------------------------------
 ### Application architecture
 In this section, please provide a brief overview of the design of your application and highlight the main components and the interaction between them.
+----------------------------------------------------------------------------------------------------------------------------------
+The application is divided into three parts: Config(config folder), Models(object folder) and Controllers(Program and Registration folders). In the Config part I have defined the database and the connection to it. The Models contain the classes definitions of the entities and in the Controllers the main functionalities of the application were created.
+----------------------------------------------------------------------------------------------------------------------------------
 ###  Implementation
 ##### Functionalities
 For each of the following functionalities, please tick the box if you implemented it and describe its input and output in your application:
 
 [x] Brew coffee \
-[ ] Create programme \
-[ ] Delete programme \
-[ ] Book a programme 
+[x] Create programme \ We get the posted data, we validate it and then we are printing a message if the programme was created or not.
+[x] Delete programme \ We get the id of the programme, and delete the product.
+[x] Book a programme \ First we get the posted data from our request, validate it and then we are printing a message if the registration was executed or not.
 
 ##### Business rules
 Please highlight all the validations and mechanisms you identified as necessary in order to avoid inconsistent states and apply the business logic in your application.
+----------------------------------------------------------------------------------------------------------------------------------
+For Creating a registration we have the following validations : Make sure the data is not empty, check if the CNP is valid (length = 13), see if the user tries to enroll into a nonexistent programme, check if the room is full and if the user has another registration at that interval or if he is already enrolled in the programme.
 
+For Creating a programme we have the following validations: Check if an admin token is valid, make sure the data is not empty, check if the programee already exists, if the room does exist and verify if we have another programme at that hour.
+
+For Deleting a programme we have the following validations: Check if an admin token is valid, get the product id and delete it.
+----------------------------------------------------------------------------------------------------------------------------------
 ##### 3rd party libraries (if applicable)
 Please give a brief review of the 3rd party libraries you used and how/ why you've integrated them into your project.
 
@@ -35,25 +52,35 @@ Please give a brief review of the 3rd party libraries you used and how/ why you'
 Please fill in the following table with the technologies you used in order to work at your application. Feel free to add more rows if you want us to know about anything else you used.
 | Name | Choice |
 | ------ | ------ |
-| Operating system (OS) | e.g. Ubuntu 20.04 |
-| Database  | e.g. MySQL 8.0|
-| Web server| e.g. Nginx |
-| PHP | e.g. 7.0 |
-| IDE | e.g. PhpStorm |
+| Operating system (OS) | Windows 10 x64 |
+| Database  | 10.4.22-MariaDB|
+| Web server| XAMPP v3.3.0 |
+| PHP | 8.1.2 |
+| IDE | Atom |
 
 ### Testing
 In this section, please list the steps and/ or tools you've used in order to test the behaviour of your solution.
-
+----------------------------------------------------------------------------------------------------------------------------------
+I used Postman for testing the application in any way possible : Tested the validations, the admin tokens and the functionalities.
+----------------------------------------------------------------------------------------------------------------------------------
 ## Feedback
 In this section, please let us know what is your opinion about this experience and how we can improve it:
 
 1. Have you ever been involved in a similar experience? If so, how was this one different?
+This was the first hackathon so I can't speak from experience but it was fun.
 2. Do you think this type of selection process is suitable for you?
+I think it is, because
 3. What's your opinion about the complexity of the requirements?
+In my opinion, the complexity was manageable.
 4. What did you enjoy the most?
+I enjoyed the whole process, especially when I managed to finish the assignment.
 5. What was the most challenging part of this anti hackathon?
+Getting used to the syntax. I knew how to solve, but had troubles trying to implement.
 6. Do you think the time limit was suitable for the requirements?
+Yes.
 7. Did you find the resources you were sent on your email useful?
+Yes.
 8. Is there anything you would like to improve to your current implementation?
+I am sure there is room for optimizations and refactoring to meet the PHP code standards.
 9. What would you change regarding this anti hackathon?
-
+Nothing.
